@@ -169,9 +169,14 @@ async function displayResults() {
     const response = await fetch(`https://lol-project-backend.onrender.com/votes?matchup=${matchupKey}`);
     const data = await response.json();
 
+    if (!data || !data.vote_counts) {
+      console.warn("No vote data returned for matchup:", matchupKey);
+      return;
+    }
+
     const [champion1, champion2] = currentMatchup;
-    const votes1 = data[champion1] || 0;
-    const votes2 = data[champion2] || 0;
+    const votes1 = data.vote_counts[champion1] || 0;
+    const votes2 = data.vote_counts[champion2] || 0;
     const totalVotes = votes1 + votes2;
 
     const percent1 = totalVotes === 0 ? 0 : Math.round((votes1 / totalVotes) * 100);
@@ -197,7 +202,7 @@ async function displayResults() {
     document.getElementById("percent1").style.display = "block";
     document.getElementById("percent2").style.display = "block";
 
-    // ✅ Wait 3 seconds AFTER updating the DOM
+    // ✅ Wait 2 seconds AFTER updating the DOM
     resultsTimeout = setTimeout(() => {
       hasVotedOrTimedOut = false;
       setRandomChampions();
