@@ -1,0 +1,635 @@
+/* GLOBAL RULES  */
+
+/* Reset browser default styles */
+* {
+    margin: 0; /* Removes default margins */
+    padding: 0; /* Removes default padding */
+    box-sizing: border-box; /* Ensures padding & borders don’t affect width */
+  }
+
+  /* Set up responsive font scaling */
+html {
+  font-size: 16px; /* Base font size (1rem = 16px) */
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Add gradient background to the entire page */
+body {
+  background: linear-gradient(to right, #082567, #1d3d8c); /* Gradient background */
+  font-family: Arial, sans-serif;  /* Optional: Set font for the entire page */            /* Ensure the body takes up the full height */
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.page-wrapper {
+  flex-shrink: 0;
+}
+
+.main-wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* HEADER STYLING */
+header 
+{
+  border-bottom: 1.5px solid white; /* Adds a 2px solid white line under the header */
+  height: 7vh;
+}
+
+h1 {
+  color: white; /* Make the heading text white */
+  text-align: center; /* Center the heading text horizontally */
+
+}
+
+/* Navigation container */
+nav ul {
+  list-style: none;
+  display: flex; /* Make headings align in a row */
+  align-items: center;
+  justify-content: flex-end; /* Align items to the right */
+  width: 100%;
+}
+/* Style the list items */
+nav ul li {
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+/* Link styling */
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem; /* Responsive font size */
+  padding: 1rem 1rem; /* Medium space between text and background */
+  display: inline-block;
+}
+
+/* ADDED!!! Logo image styling */
+.logo {
+  height: 7vh;
+  margin: bottom 0.5rem;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08); /* slightly subtler heartbeat scale */
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Always pulsing */
+.logo {
+  animation: pulse 1.2s ease-in-out infinite; /* ADDED: always pulsing */
+}
+
+/* Optional: still allow click pulse override */
+.logo.pulse-click:active {
+  animation: pulse 0.4s ease-in-out;
+}
+
+
+/* Navigation container */
+nav {
+  display: flex;           /* ADDED!!! */
+  align-items: center;     /* ADDED!!! */
+  justify-content: space-between; /* ADDED!!! to separate logo and nav items */
+}
+
+/* 1. VOTING PAGE */
+
+/* COUNTDOWN CONTAINER */
+.countdown-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;        /* vertical centering */
+  height: 7vh;
+}
+
+.countdown-text {
+  font-size: clamp(1.2rem, 3vh, 99rem);
+  font-weight: bold;
+  color: red;
+  margin-left: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+/* QUESTION CONTAINER */
+
+.question-container {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding: 0;
+  height: 3vh;
+}
+
+#question-text {
+  margin: 0;
+  text-align: center;
+  color: white;
+}
+
+/* CHAMPIONS IMAGES */
+
+/* Matchup container fills all remaining screen space after header */
+
+.matchup-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  min-height: 75vh;
+  max-height: 75vh;
+  
+
+}
+
+/* Champion 1 container (top 40%) */
+.champion1-container {
+  width: 80%; /* Width of Olaf image container */
+  min-height: 30vh;
+  
+}
+
+/* VS container (middle 10%) */
+.vs-container {
+  height:5vh; /* Middle 5% for VS */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Champion 2 container (bottom 40%) */
+.champion2-container {
+  width: 80%;
+  height: 30vh;
+  min-height: 30vh; /* To adjust container size*/
+  
+}
+
+/* Champion images (Olaf and Renekton) */
+.champion-img {
+  width: 100%; /* Image fills container width */
+  height: 100%; /* Image fills container height */
+}
+
+/* VS text */
+.vs-text {
+  color: white; /* Color of the VS text */
+}
+
+/* SHOWING VOTES */
+
+.champion1-container {
+  position: relative;
+  display: inline-block;
+  width: 80%;
+  height: 10rem; /* Set height accordingly */
+  opacity: 1;
+}
+
+.champion2-container {
+  position: relative;
+  display: inline-block;
+  width: 80%;
+  height: 10rem; /* Set height accordingly */
+  opacity: 1;
+}
+.percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem; /* Adjust size */
+  color: white;
+  display: none; /* Hidden initially */
+}
+
+
+/*2 QUESTIONS PAGE */
+
+.questions-container ul li a {
+  position: relative;
+  padding-left: 1.2em; /* space for bullet */
+  color: white;
+  text-decoration: none;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  height: 85vh;
+}
+
+.questions-container ul li a {
+  display: inline-block;   /* or block */
+  color: white;
+  font-size: 5vw;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 2vh;       /* this will now work */
+}
+
+
+.questions-container ul li a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+
+
+/* === Results Page Styles === */  /* ADDED */
+
+.results-heading {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.search-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: row;
+}
+
+.search-bar input {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.vs-text {
+  white-space: nowrap;
+  font-weight: bold;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.matchup {
+  text-align: center;
+  text-align: center;
+  color: white;
+
+}
+
+
+.champion-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  flex-wrap: nowrap;
+}
+
+.champion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.champion img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.vs {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* STICKY FOOTER */
+footer {
+  background-color: transparent; /* Matches background */
+  text-align: center;
+  color: white;
+  font-size: 0.8rem; /* Responsive font size */
+  height: 3vh;
+
+}
+
+.champion-img {
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.champion-img:hover:not(.selected):not(.disable-hover) {
+  border: 4px solid rgba(255, 0, 0, 0.527); /* Hover border only if not selected */
+}
+
+.champion-img.selected {
+  border: 4px solid red !important;
+  box-shadow: 0 0 10px red !important;
+  cursor: default !important;
+}
+
+.champion-img.disable-hover {
+  pointer-events: none;
+}
+
+.champion-img:hover {
+  border: 4px solid rgba(255, 0, 0, 0.527); /* Only show hover if not selected */
+}
+
+/* Fix: Don't allow hover effect to override selected border */
+.champion-img.selected:hover {
+  border: 4px solid red !important;
+  box-shadow: 0 0 10px red !important;
+  cursor: default !important;
+}
+
+
+/* MEDIA QUERIES */
+
+/* HEADER STYLING */
+
+@media (min-width: 768px) and (max-width: 1019px) {
+  nav ul li {
+    display: flex; /*  Use flexbox to control layout */
+    justify-content: flex-end; /*  Align items to the right */
+    padding-right: 1rem; /* ADDED!!! Pushes 'Results' away from the right edge */
+    }
+
+    nav ul li a {
+      font-size: 2rem; /*  Increased font size on medium screens */
+    }
+
+    nav ul li:first-child {
+      margin-right: 3rem; /* Larger space between Vote and Results */
+    }
+}
+
+@media (min-width: 1020px) {
+
+  header 
+{
+  border-bottom: 1.5px solid white; /* Adds a 2px solid white line under the header */
+  padding-bottom: 4rem;
+}
+  
+  nav ul li a {
+    font-size: 2rem; /* Increase font size (20px) for larger screens */
+  }
+
+ nav ul li {
+  margin-right: 10px; /* Adjust this value to control the space */
+  padding-right: 1rem;
+}
+
+.logo {
+  height: 9vh;
+  margin: bottom 0.5rem;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;        /* vertical centering */
+  max-height: 5vh;
+}
+
+.countdown-text {
+  font-size: 5rem
+  font-weight: bold;
+  color: red;
+}
+
+.questions-container ul li a {
+  display: inline-block;   /* or block */
+  color: white;
+  font-size: 3vw;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 2vh;       /* this will now work */
+}
+
+ }
+
+ @media (min-width: 1250px) {
+
+  .countdown-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;        /* vertical centering */
+  min-height: 10vh;
+}
+
+.countdown-text {
+  font-weight: bold;
+  color: red;
+}
+
+.questions-container ul li a {
+  display: inline-block;   /* or block */
+  color: white;
+  font-size: 2vw;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 2vh;       /* this will now work */
+}
+ }
+
+ .champion-img:hover {
+  border: 4px solid rgba(255, 0, 0, 0.527); /* Brown border on hover */
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.champion-img.selected {
+    border: 4px solid red; /* Change color/style as you like */
+   border-radius: 8px;
+   box-shadow: 0 0 10px red;
+}
+
+.champion-img.no-hover {
+  pointer-events: none;
+}
+
+.champion-img.no-hover:hover {
+  border-color: inherit !important;
+  cursor: default !important;
+}
+
+
+
+@media (min-width: 1900px) { /* ADDED!!! - Media query for screens 1900px or wider */
+  nav ul {
+    display: flex; /* Ensure links are in a row */
+    justify-content: flex-end; /* Align links to the right */
+    padding-right: 2rem; /*  Small space between Results and the right edge */
+  }
+
+  nav ul li:first-child {
+    margin-right: 8rem; /*  Increase space between Vote and Results */
+  }
+
+  nav ul li a {
+    font-size: 2.5rem; /* Optional: Increase font size for large screens */
+  }
+
+  .logo {
+  height:7vh;
+  margin: bottom 0.5rem;
+}
+}
+
+/* QUESTION CONTAINER */
+
+@media (min-width: 768px)  {
+  .question-container {
+    height: 3vh; /* Reduce space taken by the question */
+  }
+
+  #question-text {
+    font-size: 2rem; /* Slightly smaller question text */
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1900px) {
+  #question-text {
+    font-size: 4rem; /* Slightly smaller question text */
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+ /* Matchup container */
+@media (min-width: 1020px) {
+
+  .matchup-container {
+    flex-direction: row;       /* Side-by-side layout on larger screens */
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .champion1-container,
+  .champion2-container {
+      display: flex;
+      justify-content: center;   /* Center image horizontally */
+      align-items: center;       /* Center image vertically */
+      width: 40%;               /* Equal width on larger screens */
+      height: 70vh;            /* 75% of the viewport height */
+      padding-top: 4%;        /* Start the image 1% from the top */
+      padding-bottom: 4%;     /* Leave 5% space at the bottom */
+    }
+  
+    .vs-container {
+      width: 10%;
+      height: auto;              /*  Remove fixed height */
+    }
+  
+    .champion-img {
+      width: 90%;           
+      height: 100%;             
+    }
+  }
+
+  @media (min-width: 768px)  {
+  .results-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+  }
+
+  @media (min-width: 1920px)  {
+  .results-heading {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+  }
+
+  @media (min-width: 568px) and (max-width: 896px) and (max-height: 430px) and (orientation: landscape) {
+
+    header 
+{
+  border-bottom: 1.5px solid white; /* Adds a 2px solid white line under the header */
+
+}
+   
+    nav ul {
+    justify-content: flex-end; /* Align links to the right */
+    align-items: flex-end; /* This aligns children (like ul) to the top */
+    padding-top: 0;
+    margin-top: 0;
+    height: 8vh;
+    
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Increase font size (20px) for larger screens */
+  }
+  
+  .matchup-container {
+    flex-direction: row;       /* Side-by-side layout on larger screens */
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .champion1-container,
+  .champion2-container {
+      display: flex;
+      justify-content: center;   /* Center image horizontally */
+      align-items: center;       /* Center image vertically */
+      width: 40%;               /* Equal width on larger screens */
+      height: 70vh;            /* 75% of the viewport height */
+      padding-top: 4%;        /* Start the image 1% from the top */
+      padding-bottom: 4%;     /* Leave 5% space at the bottom */
+    }
+  
+    .vs-container {
+      width: 10%;
+      height: auto;              /*  Remove fixed height */
+    }
+  
+    .champion-img {
+      width: 90%;           
+      height: 100%;             
+    }
+
+    .questions-container ul li a {
+  display: inline-block;   /* or block */
+  color: white;
+  font-size: 2.5vw;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 2vh;       /* this will now work */
+}
+
+  }
+  
