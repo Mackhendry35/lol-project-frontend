@@ -454,29 +454,6 @@ footer {
 }
  }
 
- .champion-img:hover {
-  border: 4px solid rgba(255, 0, 0, 0.527); /* Brown border on hover */
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.champion-img.selected {
-    border: 4px solid red; /* Change color/style as you like */
-   border-radius: 8px;
-   box-shadow: 0 0 10px red;
-}
-
-.champion-img.no-hover {
-  pointer-events: none;
-}
-
-.champion-img.no-hover:hover {
-  border-color: inherit !important;
-  cursor: default !important;
-}
-
-
-
 @media (min-width: 1900px) { /* ADDED!!! - Media query for screens 1900px or wider */
   nav ul {
     display: flex; /* Ensure links are in a row */
