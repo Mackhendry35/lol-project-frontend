@@ -51,6 +51,10 @@ function setRandomChampions() {
   const champ1Img = document.getElementById("champion1");
   const champ2Img = document.getElementById("champion2");
 
+  // ALWAYS remove 'selected' class from both images
+  champ1Img.classList.remove("selected");
+  champ2Img.classList.remove("selected");
+
   // Only update src/alt if they actually change
   if (champ1Img.alt !== champion1) {
     champ1Img.src = `assets/lol champion portraits webp/${champion1}.webp`;
@@ -61,20 +65,19 @@ function setRandomChampions() {
     champ2Img.alt = champion2;
   }
 
-  // Remove old classes
-  champ1Img.classList.remove("faded", "selected", "no-hover");
-  champ2Img.classList.remove("faded", "selected", "no-hover");
+  // Remove other classes for safety
+  champ1Img.classList.remove("faded", "no-hover");
+  champ2Img.classList.remove("faded", "no-hover");
 
   // Hide vote percentages
   document.getElementById("percent1").style.display = "none";
   document.getElementById("percent2").style.display = "none";
 
-  // Remove old event listeners by creating wrapper functions:
-  // Instead of using cloneNode (which triggers image reload!), use named functions:
-
+  // Assign new click events
   champ1Img.onclick = () => handleVote(champion1);
   champ2Img.onclick = () => handleVote(champion2);
 }
+
 
 
 async function startCountdown() {
