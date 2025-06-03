@@ -1,5 +1,5 @@
 
-const champions = [ "Aatrox", "Darius", "DrMundo", "Mordekaiser", "Renekton", "Sett", "Shen", "Yorick"];
+const champions = [ "Aatrox", "DrMundo", "Garen", "Renekton", "Sett", "Shen", 'Sion', "Yorick"];
 
 // Track previously shown matchups
 const shownMatchups = new Set();
