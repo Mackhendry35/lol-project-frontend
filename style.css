@@ -238,6 +238,7 @@ nav {
   text-decoration: none;
   font-size: clamp(1rem, 2vw, 1.5rem);
   height: 85vh;
+  width:100vw
 }
 
 .questions-container ul li a {
@@ -247,6 +248,7 @@ nav {
   font-weight: bold;
   text-decoration: none;
   margin-top: 2vh;       /* this will now work */
+  width: 100vw;
 }
 
 
