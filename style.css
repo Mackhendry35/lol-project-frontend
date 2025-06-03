@@ -231,6 +231,12 @@ nav {
 
 /*2 QUESTIONS PAGE */
 
+.questions-container:focus,
+.questions-container:active {
+  outline: none;
+  box-shadow: none;
+}
+
 .questions-container ul li a {
   position: relative;
   padding-left: 1.2em; /* space for bullet */
