@@ -45,6 +45,8 @@ function getUniqueMatchup() {
 let currentMatchup = [];
 
 function setRandomChampions() {
+
+
   currentMatchup = getUniqueMatchup();
   const [champion1, champion2] = currentMatchup;
 
