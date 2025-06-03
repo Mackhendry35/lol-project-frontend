@@ -1,5 +1,27 @@
 let allRawResults = {}; // ADDED ✅
 
+// ADDED BY THE CODE: Preload portrait images
+function preloadImage(url) {
+  const img = new Image();
+  img.src = url;
+}
+
+// ADDED BY THE CODE: Preload all portraits as soon as we have the results
+function preloadAllPortraits() {
+  const loadedPortraits = new Set();
+  for (const [matchupKey, votes] of Object.entries(allRawResults)) {
+    let [champ1, champ2] = matchupKey.split(/[-_]/);
+    if (!loadedPortraits.has(champ1)) {
+      preloadImage(getPortraitURL(champ1));
+      loadedPortraits.add(champ1);
+    }
+    if (!loadedPortraits.has(champ2)) {
+      preloadImage(getPortraitURL(champ2));
+      loadedPortraits.add(champ2);
+    }
+  }
+}
+
 function getPortraitURL(championName) {
   return `assets/lol champion portraits webp/${championName}.webp`;
 }
@@ -102,6 +124,8 @@ async function loadResults() {
     }
 
     allRawResults = convertedData; // ADDED ✅ Store for filtering
+
+    preloadAllPortraits(); // ADDED BY THE CODE: Preload all images before displaying
 
     displayFilteredResults(); // Show filtered results
   } catch (error) {
