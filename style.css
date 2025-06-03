@@ -231,10 +231,12 @@ nav {
 
 /*2 QUESTIONS PAGE */
 
-.questions-container:focus,
-.questions-container:active {
+.questions-container ul li a:focus,
+.questions-container ul li a:active {
   outline: none;
+  background-color: transparent;
   box-shadow: none;
+  -webkit-tap-highlight-color: transparent; /* Removes highlight on mobile */
 }
 
 .questions-container ul li a {
