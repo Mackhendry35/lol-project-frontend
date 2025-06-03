@@ -1,5 +1,11 @@
 
+
 const champions = [ "Aatrox", "DrMundo", "Garen", "Renekton", "Sett", "Shen", 'Sion', "Yorick"];
+// ADDED: Preload all champion images once at the top of your JS
+champions.forEach(champ => {
+  const img = new Image();
+  img.src = `assets/lol champion portraits webp/${champ}.webp`;
+});
 
 // Track previously shown matchups
 const shownMatchups = new Set();
@@ -45,32 +51,29 @@ function setRandomChampions() {
   const champ1Img = document.getElementById("champion1");
   const champ2Img = document.getElementById("champion2");
 
-  // ✅ Update existing image elements instead of cloning/replacing
-  champ1Img.src = `assets/lol champion portraits webp/${champion1}.webp`;
-  champ1Img.alt = champion1;
+  // Only update src/alt if they actually change
+  if (champ1Img.alt !== champion1) {
+    champ1Img.src = `assets/lol champion portraits webp/${champion1}.webp`;
+    champ1Img.alt = champion1;
+  }
+  if (champ2Img.alt !== champion2) {
+    champ2Img.src = `assets/lol champion portraits webp/${champion2}.webp`;
+    champ2Img.alt = champion2;
+  }
 
-  champ2Img.src = `assets/lol champion portraits webp/${champion2}.webp`;
-  champ2Img.alt = champion2;
+  // Remove old classes
+  champ1Img.classList.remove("faded", "selected", "no-hover");
+  champ2Img.classList.remove("faded", "selected", "no-hover");
 
-  champ1Img.classList.remove("faded", "selected", "no-hover"); 
-  champ2Img.classList.remove("faded", "selected", "no-hover"); 
-
-  // ✅ Clear any faded or selected styles
-  champ1Img.classList.remove("faded", "selected");
-  champ2Img.classList.remove("faded", "selected");
-
+  // Hide vote percentages
   document.getElementById("percent1").style.display = "none";
   document.getElementById("percent2").style.display = "none";
 
-  // ✅ Remove old event listeners (optional but safer in case of repeated calls)
-  const newChamp1 = champ1Img.cloneNode(true);
-  const newChamp2 = champ2Img.cloneNode(true);
-  champ1Img.replaceWith(newChamp1);
-  champ2Img.replaceWith(newChamp2);
+  // Remove old event listeners by creating wrapper functions:
+  // Instead of using cloneNode (which triggers image reload!), use named functions:
 
-  // ✅ Re-bind click events
-  newChamp1.addEventListener("click", () => handleVote(champion1));
-  newChamp2.addEventListener("click", () => handleVote(champion2));
+  champ1Img.onclick = () => handleVote(champion1);
+  champ2Img.onclick = () => handleVote(champion2);
 }
 
 
