@@ -1,5 +1,5 @@
-// Only using 4 champions for now
-const champions = [ "Ambessa", "Darius", "Gwen", "Jax", "Olaf", "Renekton"];
+
+const champions = [ "Aatrox", "Darius", "DrMundo", "Mordekaiser", "Renekton", "Sett", "Shen", "Yorick"];
 
 // Track previously shown matchups
 const shownMatchups = new Set();
