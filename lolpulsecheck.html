@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoL Pulse Check – Home</title>
+  <meta name="title" content="LoL Pulse Check – Home">
+  <meta name="description" content="League of Legends community pulse – see who wins at level 1!">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Center content in main */
+    .center-logo-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 0;  /* Tightest possible gap */
+}
+.logo.center {
+  height: 70vh;
+  max-width: 80vw;
+  margin-bottom: -0.8rem;  /* Pulls domain up */
+}
+.site-domain {
+  color: white;
+  font-size: 1rem;
+  font-family:'
+  font-weight: bold;
+  text-shadow: 0 1px 8px #000b;
+  margin-top: -0.6rem;    /* Pulls domain even closer to logo */
+  letter-spacing: 2px;
+}
+
+  </style>
+</head>
+<body>
+  
+
+  <main>
+    <div class="center-logo-main">
+      <!-- Main Logo, pulsing -->
+      <img src="assets/LP logo transparent.webp"
+           alt="LoL Pulse Check Logo"
+           class="logo center pulse-hover pulse-click"
+           style="display:block;margin:0 auto;" />
+      <!-- Domain Text -->
+      <div class="site-domain"></div>
+    </div>
+  </main>
