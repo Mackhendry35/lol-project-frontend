@@ -1,6 +1,6 @@
 
 
-const champions = [ "Aatrox", "DrMundo", "Garen", "Renekton", "Sett", "Shen", 'Sion', "Yorick"];
+const champions = [ "Aatrox", "Darius","Garen", "Jax", "Malphite", "Mordekaiser", "Renekton", "Sett", "Shen", 'Sion', "Teemo", "Yorick"];
 // ADDED: Preload all champion images once at the top of your JS
 champions.forEach(champ => {
   const img = new Image();
