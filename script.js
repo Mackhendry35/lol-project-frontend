@@ -159,6 +159,10 @@ async function handleVote(winner) {
 
   // Just display results; the 3s delay happens inside that function
   await displayResults();
+
+  // ADDED: Force a full page reload so GA/AdSense counts this as a new pageview
+  window.location.reload();
+  
 }
 
 
